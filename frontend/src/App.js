@@ -72,7 +72,8 @@ function App() {
                 <th>image</th>
               </tr>
               {characters.map((character) => (
-                <tr onClick={() => chooseCharacter(character.id)}>
+                <tr style={character.id === chosenCharacter.id ? {backgroundColor: 'red'} : {}}
+                 onClick={() => chooseCharacter(character.id)}>
                   <td>{character.id}</td>
                   <td>{character.fullName}</td>
                   <td>{character.title}</td>

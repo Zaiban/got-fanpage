@@ -15,7 +15,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,8 +48,10 @@
 
 .left {
   float: left; /* Float the left box to the left */
+  width: 30%
 }
 
 .right {
   float: right; /* Float the right box to the right */
+  width: 66%;
 }
