@@ -17,8 +17,12 @@ function App() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
+
+        // Data successfull fetched, store to local state
         setCharacters(data);
-        console.log('data fetched: ', data);
+
+        // Update the "chosen character" to be the first one in the array
+        setChosenCharacter(data[0]);
       } catch (err) {
         setError(err.message);
       } finally {
