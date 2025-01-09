@@ -6,6 +6,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [chosenCharacter, setChosenCharacter] = useState({ fullName: 'No character chosen' });
 
   useEffect(() => {
     // Fetch data from Thrones API
@@ -32,31 +33,58 @@ function App() {
     return <div>Loading...</div>
   }
 
+  const chooseCharacter = (id) => {
+    console.log('clicked: ', id);
+    setChosenCharacter(characters.find((item) => (item.id === id)));
+
+  }
+
+  console.log('chosenCharacter:', chosenCharacter)
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Got fanpage</h1>
-        <table style={{
-          border: '3px solid white'
-        }}>
-          <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>title</th>
-            <th>image</th>
-          </tr>
-          {characters.map((character) => (
-            <tr>
-              <td>{character.id}</td>
-              <td>{character.fullName}</td>
-              <td>{character.title}</td>
-              <td><img width={80} src={character.imageUrl}></img></td>
-            </tr>
-          )
-          )}
 
-        </table>
+        <div className='container'>
+          <div className='box right' style={{ border: '3px solid white', margin: '1em' }}>
+            <h1>Details about: {chosenCharacter.fullName}</h1>
+
+            <img width={200} src={chosenCharacter.imageUrl}></img>
+
+            <p>Family: {chosenCharacter.family}</p>
+            <p>First name: {chosenCharacter.firstName}</p>
+            <p>Last name: {chosenCharacter.lastName}</p>
+            <p>Title: {chosenCharacter.title}</p>
+
+
+          </div>
+
+          <div className='box left'>
+
+            <table style={{
+              border: '3px solid white'
+            }}>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>title</th>
+                <th>image</th>
+              </tr>
+              {characters.map((character) => (
+                <tr onClick={() => chooseCharacter(character.id)}>
+                  <td>{character.id}</td>
+                  <td>{character.fullName}</td>
+                  <td>{character.title}</td>
+                  <td><img width={80} src={character.imageUrl}></img></td>
+                </tr>
+              )
+              )}
+
+            </table>
+          </div>
+
+        </div>
 
 
 

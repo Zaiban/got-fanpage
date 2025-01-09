@@ -35,3 +35,22 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  width: 100%; /* Ensure the container takes the full width */
+  overflow: hidden; /* Clear floats */
+}
+
+.box {
+  width: 49%; /* Adjust width to allow space for two boxes side by side */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left {
+  float: left; /* Float the left box to the left */
+}
+
+.right {
+  float: right; /* Float the right box to the right */
+}
